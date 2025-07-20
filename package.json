@@ -1,0 +1,16 @@
+{
+  "name": "nako_script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+      "build": "npx tsc",
+      "run": "npm run-script build && node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
