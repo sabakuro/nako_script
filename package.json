@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
       "build": "npx tsc",
-      "run": "npm run-script build && node src/index.js"
+      "run": "npm run-script build && node dist/index.js"
   },
   "keywords": [],
   "author": "",

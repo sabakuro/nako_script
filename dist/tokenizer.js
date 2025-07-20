@@ -37,8 +37,6 @@ class Tokenizer {
         this.toToken = (value) => {
             var _a;
             const type = (_a = this.TokenPatterns.find((pattern) => pattern[1].exec(value))) === null || _a === void 0 ? void 0 : _a[0];
-            console.log(value);
-            console.log(type);
             return type && { type, value };
         };
         this.tokenize = (input) => {
