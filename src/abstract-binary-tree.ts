@@ -1,37 +1,34 @@
 export enum NodeTypes {
-    NumberLiteral,
-    Identifier,
-    BinaryExpression,
-    LetStatement,
-    PrintStatement,
-    Program
+    NumberLiteral = 'NumberLiteral',
+    Identifier = 'Identifier',
+    BinaryExpression = 'BinaryExpression',
+    LetStatement = 'LetStatement',
+    PrintStatement = 'PrintStatement',
+    Program = 'Program',
 }
 
 export interface NumberLiteral {
-    type: NodeTypes.NumberLiteral,
-    name: number
+    type: NodeTypes.NumberLiteral;
+    value: number;
 }
 
 export interface Identifier {
-    type: NodeTypes.Identifier,
-    name: string
+    type: NodeTypes.Identifier;
+    name: string;
 }
 
 export interface BinaryExpression {
-    type: NodeTypes.BinaryExpression,
+    type: NodeTypes.BinaryExpression;
     operator: string;
     left: Expression;
     right: Expression;
 }
 
-export type Expression =
-    | NumberLiteral
-    | Identifier
-    | BinaryExpression;
+export type Expression = NumberLiteral | Identifier | BinaryExpression;
 
 export interface LetStatement {
     type: NodeTypes.LetStatement;
-    name: string;
+    name: Identifier;
     value: Expression;
 }
 
@@ -40,11 +37,9 @@ export interface PrintStatement {
     value: Expression;
 }
 
-export type Statement =
-    | LetStatement
-    | PrintStatement;
+export type Statement = LetStatement | PrintStatement;
 
 export interface Program {
     type: NodeTypes.Program;
-    value: Statement[];
+    body: Statement[];
 }
