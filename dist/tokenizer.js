@@ -32,7 +32,7 @@ class Tokenizer {
             [TokenType.LParen, /^\(/],
             [TokenType.RParen, /^\)/],
             [TokenType.Semicolon, /^;/],
-            [TokenType.Whitespace, /^[ \t\r]+/],
+            [TokenType.Whitespace, /^[ \t\r\n]+/],
         ];
         this.toToken = (value) => {
             var _a;
@@ -40,23 +40,10 @@ class Tokenizer {
             return type && { type, value };
         };
         this.tokenize = (input) => {
-            const { toToken } = this;
-            const tokens = [];
-            let remaining = input;
-            while (remaining.length) {
-                let pos = 0;
-                while (pos < remaining.length && !toToken(remaining.slice(0, pos))) {
-                    pos++;
-                }
-                const slice = remaining.slice(0, pos);
-                const token = toToken(slice);
-                if (!token) {
-                    throw new Error(`Unexpected token starting at: "${slice}"`);
-                }
-                tokens.push(token);
-                remaining = remaining.slice(pos + token.value.length);
-            }
-            return tokens;
+            const values = input.split(/\s+/).filter((string) => string);
+            return values
+                .map((value) => this.toToken(value))
+                .filter((token) => token != undefined);
         };
     }
 }

@@ -4,5 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tokenizer_1 = __importDefault(require("./tokenizer"));
+const parser_1 = __importDefault(require("./parser"));
 const tokenizer = new tokenizer_1.default();
-console.log(tokenizer.tokenize("let x = 1 + 5;"));
+const parser = new parser_1.default();
+const code = `
+  let x = 2 + 3 * ( 4 + 5 ) ;
+  print x ;
+  let y = ( 1 + 2 ) * 4 ;
+  print y ;
+`;
+const tokens = tokenizer.tokenize(code);
+const program = parser.parseProgram(tokens);
+console.log(JSON.stringify(program));
