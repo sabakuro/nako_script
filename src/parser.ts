@@ -3,8 +3,6 @@ import {
     NodeTypes,
     Program,
     Statement,
-    LetStatement,
-    PrintStatement,
     Expression,
     BinaryExpression,
     Identifier,

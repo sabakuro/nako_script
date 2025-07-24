@@ -1,3 +1,5 @@
+import { TokenType } from './tokenizer';
+
 export enum NodeTypes {
     NumberLiteral = 'NumberLiteral',
     Identifier = 'Identifier',
@@ -19,7 +21,7 @@ export interface Identifier {
 
 export interface BinaryExpression {
     type: NodeTypes.BinaryExpression;
-    operator: string;
+    operator: TokenType;
     left: Expression;
     right: Expression;
 }

@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const tokenizer_1 = __importDefault(require("./tokenizer"));
 const parser_1 = __importDefault(require("./parser"));
+const evaluator_1 = __importDefault(require("./evaluator"));
 const tokenizer = new tokenizer_1.default();
 const parser = new parser_1.default();
+const evaluator = new evaluator_1.default();
 const code = `
   let x = 2 + 3 * ( 4 + 5 ) ;
   print x ;
@@ -15,4 +17,4 @@ const code = `
 `;
 const tokens = tokenizer.tokenize(code);
 const program = parser.parseProgram(tokens);
-console.log(JSON.stringify(program));
+evaluator.evaluateProgram(program);
